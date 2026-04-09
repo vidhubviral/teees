@@ -1,0 +1,49 @@
+<style>
+html, body {
+    margin: 0;
+    background: transparent;
+}
+
+.player {
+    width: 100%;
+    max-width: 720px;
+    height: 400px;
+    background: url('https://picsum.photos/900/500') center/cover;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background: rgba(0,0,0,0.6);
+    border-radius: 50%;
+}
+
+.play-btn::before {
+    content: '';
+    border-left: 20px solid white;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+}
+</style>
+
+<div class="player" onclick="redirect()">
+    <div class="overlay"></div>
+    <div class="play-btn"></div>
+</div>
