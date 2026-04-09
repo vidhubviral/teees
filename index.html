@@ -1,49 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-html, body {
+body {
     margin: 0;
+    font-family: Arial, sans-serif;
     background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
+/* PLAYER ONLY */
 .player {
-    width: 100%;
-    max-width: 720px;
+    position: relative;
+    width: 720px;
     height: 400px;
-    background: url('https://picsum.photos/900/500') center/cover;
+    background: url('https://picsum.photos/900/500') center/cover no-repeat;
     border-radius: 12px;
     overflow: hidden;
-    position: relative;
+    cursor: pointer;
 }
 
+/* OVERLAY */
 .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
 }
 
+/* PLAY BUTTON */
 .play-btn {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
     background: rgba(0,0,0,0.6);
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .play-btn::before {
     content: '';
-    border-left: 20px solid white;
-    border-top: 12px solid transparent;
-    border-bottom: 12px solid transparent;
+    border-left: 22px solid white;
+    border-top: 14px solid transparent;
+    border-bottom: 14px solid transparent;
+    margin-left: 6px;
+}
+
+/* CONTROLS */
+.controls {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-40%, -50%);
+    bottom: 0;
+    width: 100%;
+    padding: 12px;
+}
+
+.progress {
+    height: 4px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress span {
+    display: block;
+    height: 100%;
+    width: 8%;
+    background: red;
+}
+
+/* TIME TEXT */
+.time {
+    font-size: 12px;
+    color: #fff;
+    margin-top: 5px;
 }
 </style>
+</head>
+
+<body>
 
 <div class="player" onclick="redirect()">
     <div class="overlay"></div>
+
     <div class="play-btn"></div>
+
+    <div class="controls">
+        <div class="progress">
+            <span id="bar"></span>
+        </div>
+        <div class="time">0:01 / 12:50</div>
+    </div>
 </div>
+
+<script>
+
+/* PROGRESS FAKE */
+let progress = 8;
+setInterval(() => {
+    progress += Math.random() * 1.5;
+    if(progress > 25) progress = 8;
+    document.getElementById("bar").style.width = progress + "%";
+}, 1000);
+
+/* REDIRECT */
+function redirect() {
+    window.location.href = "https://videy.co/v/?id=SvGi6cAg1";
+}
+
+</script>
+
+</body>
+</html>
